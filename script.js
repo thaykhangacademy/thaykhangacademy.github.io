@@ -15,7 +15,7 @@ function toggleFaq(button) {
 function selectCourse(type) {
   const data = {
     "Hạng B": {
-      title: "THÔNG TIN CHI TIẾT KHÓA ĐÀO TẠO LÁI XE HẠNG B (B1/B2)",
+      title: "THÔNG TIN CHI TIẾT KHÓA ĐÀO TẠO LÁI XE HẠNG B (Cơ khí/Tự động)",
       content: `
                 <h3>1. Tổng quan về giấy phép lái xe Hạng B</h3>
                 <p>Hạng B là loại bằng lái phổ biến nhất hiện nay, cho phép điều khiển xe ô tô chở người đến 9 chỗ ngồi và xe tải dưới 3,5 tấn. Tại Thầy Khang Academy, chúng tôi phân loại rõ ràng: <strong>B1 (Số tự động)</strong> dành cho nhu cầu gia đình và <strong>B2 (Số sàn)</strong> dành cho cả nhu cầu gia đình lẫn kinh doanh vận tải.</p>
@@ -28,17 +28,17 @@ function selectCourse(type) {
                 </ul>
 
                 <h3>3. Cam kết về cơ sở vật chất và chi phí</h3>
-                <p>Chúng tôi sử dụng dàn xe Toyota Vios đời mới, trang bị máy lạnh 100%. Học phí 17 triệu đồng đã bao gồm toàn bộ lệ phí hồ sơ, xăng xe và công thầy kèm 1-1. Thầy Khang cam kết không có tình trạng "bồi dưỡng" thêm trong quá trình học để học viên giữ tâm lý thoải mái nhất.</p>
+                <p>Chúng tôi sử dụng dàn xe Toyota, Hyundai, Suzuki,... đời mới, trang bị máy lạnh 100%. Học phí 17 triệu đồng đã bao gồm toàn bộ lệ phí hồ sơ, xăng xe và công thầy kèm 1-1. Thầy Khang cam kết không có tình trạng "bồi dưỡng" thêm trong quá trình học để học viên giữ tâm lý thoải mái nhất.</p>
                 
                 <h3>4. Kinh nghiệm thi cử</h3>
                 <p>Không chỉ dạy lái xe, Thầy còn chia sẻ mẹo làm bài lý thuyết 600 câu và 120 tình huống mô phỏng giúp học viên tiết kiệm thời gian học mà vẫn đạt kết quả cao.</p>
             `,
     },
     "Hạng C1": {
-      title: "THÔNG TIN CHI TIẾT KHÓA ĐÀO TẠO LÁI XE HẠNG C (XE TẢI)",
+      title: "THÔNG TIN CHI TIẾT KHÓA ĐÀO TẠO LÁI XE HẠNG C1 (XE TẢI)",
       content: `
                 <h3>1. Đặc thù của bằng lái Hạng C</h3>
-                <p>Giấy phép lái xe hạng C (thường gọi là bằng xe tải) cho phép điều khiển xe tải trên 3,5 tấn và các loại xe thuộc hạng B1, B2. Đây là sự lựa chọn hàng đầu cho những học viên có định hướng hành nghề lái xe chuyên nghiệp hoặc kinh doanh vận tải nặng.</p>
+                <p>Giấy phép lái xe hạng C1 (thường gọi là bằng xe tải) cho phép điều khiển xe tải trên 3,5 tấn và các loại xe thuộc hạng B1, B2. Đây là sự lựa chọn hàng đầu cho những học viên có định hướng hành nghề lái xe chuyên nghiệp hoặc kinh doanh vận tải nặng.</p>
                 
                 <h3>2. Nội dung đào tạo chuyên sâu</h3>
                 <ul>

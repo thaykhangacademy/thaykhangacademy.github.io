@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Tin Đăng - Thầy Khang</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #00bcd4;
+        --bg: #f1f5f9;
+        --text: #1e293b;
+      }
+      body {
+        font-family: "Lexend", sans-serif;
+        background: var(--bg);
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+      }
+      .container {
+        max-width: 450px;
+        width: 100%;
+      }
+
+      /* Tiêu đề */
+      .header {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .header h2 {
+        margin: 0;
+        color: #0f172a;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+      }
+
+      /* Khung đăng nhập 3 lớp */
+      #login-zone {
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
+        display: none;
+        border: 1px solid #e2e8f0;
+      }
+      #login-zone h4 {
+        margin: 0 0 15px 0;
+        text-align: center;
+        color: #64748b;
+      }
+
+      /* Khung soạn bài */
+      #admin-box {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 15px 30px rgba(0, 188, 210, 0.15);
+        margin-bottom: 25px;
+        display: none;
+        border: 2px solid var(--primary);
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 14px;
+        box-sizing: border-box;
+        font-family: inherit;
+      }
+
+      input:focus {
+        border-color: var(--primary);
+        outline: none;
+        background: #faffff;
+      }
+
+      .btn-post {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 14px;
+        border-radius: 10px;
+        font-weight: 700;
+        width: 100%;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn-post:hover {
+        background: #00acc1;
+      }
+
+      /* Hiển thị bài viết */
+      .post-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+      }
+      .author-bar {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+      }
+      .avatar {
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .post-img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .post-info {
+        padding: 15px;
+      }
+      .post-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+      }
+      .post-text {
+        font-size: 0.95rem;
+        color: #475569;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .admin-trigger {
+        margin-top: 30px;
+        color: #cbd5e1;
+        cursor: pointer;
+        font-size: 0.7rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Bản Tin Thầy Khang</h2>
+      </div>
+
+      <div id="login-zone">
+        <h4>XÁC THỰC QUẢN TRỊ</h4>
+        <input type="text" id="user" placeholder="Tên đăng nhập" />
+        <input type="password" id="pass" placeholder="Mật khẩu" />
+        <input type="text" id="otp" placeholder="Mã xác nhận" />
+        <button class="btn-post" onclick="checkLogin()">VÀO HỆ THỐNG</button>
+      </div>
+
+      <div id="admin-box">
+        <h3 style="text-align: center; color: var(--primary); margin-top: 0">
+          SOẠN TIN MỚI
+        </h3>
+        <input type="text" id="title" placeholder="Tiêu đề quảng cáo" />
+        <textarea
+          id="text"
+          rows="3"
+          placeholder="Nội dung bài viết..."
+        ></textarea>
+        <input type="text" id="img" placeholder="Dán link ảnh tại đây" />
+        <button
+          class="btn-post"
+          style="background: #4caf50"
+          onclick="publish()"
+        >
+          XUẤT BẢN BÀI VIẾT
+        </button>
+      </div>
+
+      <div id="feed">
+        <div class="post-card">
+          <div class="author-bar">
+            <div class="avatar">K</div>
+            <div>
+              <strong>THẦY KHANG</strong><br /><small style="color: #94a3b8"
+                >Hệ thống Driver</small
+              >
+            </div>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800"
+            class="post-img"
+          />
+          <div class="post-info">
+            <h2 class="post-title">Khai giảng lớp lái xe mới</h2>
+            <p class="post-text">
+              Nội dung mẫu: Đăng ký ngay để nhận ưu đãi từ Thầy Khang.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="admin-trigger"
+        onclick="document.getElementById('login-zone').style.display = 'block'"
+      >
+        Quản trị viên
+      </div>
+    </div>
+
+    <script>
+      // THÔNG TIN ĐĂNG NHẬP CỦA THẦY
+      const AUTH = {
+        user: "thaykhang",
+        pass: "0907488815",
+        otp: "123456",
+      };
+
+      function checkLogin() {
+        const u = document.getElementById("user").value;
+        const p = document.getElementById("pass").value;
+        const o = document.getElementById("otp").value;
+
+        if (u === AUTH.user && p === AUTH.pass && o === AUTH.otp) {
+          document.getElementById("admin-box").style.display = "block";
+          document.getElementById("login-zone").style.display = "none";
+        } else {
+          alert("Sai thông tin đăng nhập hoặc mã xác nhận!");
+        }
+      }
+
+      function publish() {
+        const d = {
+          t: document.getElementById("title").value,
+          c: document.getElementById("text").value,
+          i: document.getElementById("img").value,
+        };
+        localStorage.setItem("post_khang_data", JSON.stringify(d));
+        render();
+        alert("Đã đăng tin thành công!");
+      }
+
+      function render() {
+        const s = localStorage.getItem("post_khang_data");
+        if (s) {
+          const d = JSON.parse(s);
+          document.getElementById("feed").innerHTML = `
+                <div class="post-card">
+                    <div class="author-bar">
+                        <div class="avatar">K</div>
+                        <div><strong>THẦY KHANG</strong><br><small style="color:#94a3b8">Vừa đăng tin</small></div>
+                    </div>
+                    <img src="${d.i || "https://via.placeholder.com/800x450"}" class="post-img">
+                    <div class="post-info">
+                        <h2 class="post-title">${d.t}</h2>
+                        <p class="post-text">${d.c}</p>
+                    </div>
+                </div>`;
+        }
+      }
+      render();
+    </script>
+  </body>
+</html>
