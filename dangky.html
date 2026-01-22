@@ -15,14 +15,16 @@
     <style>
       body {
         font-family: "Lexend", sans-serif;
-        /* Sử dụng duy nhất 1 màu xanh đậm đà như ảnh Thầy gửi */
-        background-color: #0b2f4e;
+        /* 1. Sửa màu nền xanh chuẩn của Thầy */
+        background-color: #00acc1;
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         margin: 0;
-        padding: 20px;
+        /* 2. Padding để khi màn hình nhỏ, khung không dính sát mép */
+        padding: 15px;
+        box-sizing: border-box;
       }
 
       .form-card {
@@ -31,8 +33,8 @@
         border-radius: 25px;
         width: 100%;
         max-width: 500px;
-        /* Đổ bóng nhẹ để nổi bật trên nền xanh */
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
       }
 
       h1 {
@@ -58,10 +60,12 @@
       .input-box input,
       .input-box select {
         width: 100%;
+        /* 3. Font-size 16px cực kỳ quan trọng cho Mobile 
+       để tránh iPhone tự động phóng to (zoom) màn hình khi gõ */
+        font-size: 16px;
         padding: 12px;
         border: 2px solid #e2e8f0;
         border-radius: 10px;
-        font-size: 1rem;
         box-sizing: border-box;
         transition: 0.3s;
       }
@@ -83,11 +87,31 @@
         font-weight: 800;
         cursor: pointer;
         transition: 0.3s;
+        /* Tránh bị bóng mờ mặc định trên một số dòng điện thoại */
+        -webkit-appearance: none;
       }
 
       .btn-submit:hover {
         background: #0891b2;
         transform: translateY(-2px);
+      }
+
+      /* 4. ĐOẠN TỐI ƯU RIÊNG CHO ĐIỆN THOẠI (Dưới 480px) */
+      @media (max-width: 480px) {
+        .form-card {
+          padding: 25px 20px; /* Giảm khoảng cách bên trong để khung rộng hơn */
+          border-radius: 15px;
+        }
+
+        h1 {
+          font-size: 1.2rem; /* Hạ kích thước tiêu đề một chút */
+          margin-bottom: 20px;
+        }
+
+        .btn-submit {
+          padding: 12px;
+          font-size: 1rem;
+        }
       }
 
       .back-home {
