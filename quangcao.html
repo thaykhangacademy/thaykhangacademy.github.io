@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quản Lý Tin Đăng - Thầy Khang</title>
+    <title>Bản Tin Thầy Khang Academy</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;500;700&display=swap"
       rel="stylesheet"
@@ -21,45 +21,28 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 15px;
+        padding: 10px;
       }
       .container {
-        max-width: 450px;
+        max-width: 480px;
         width: 100%;
       }
 
-      /* Tiêu đề */
-      .header {
-        text-align: center;
-        margin-bottom: 25px;
-      }
-      .header h2 {
-        margin: 0;
-        color: #0f172a;
-        font-size: 1.4rem;
-        text-transform: uppercase;
-      }
-
-      /* Khung đăng nhập 3 lớp */
+      /* Khung đăng nhập */
       #login-zone {
         background: white;
-        padding: 25px;
+        padding: 20px;
         border-radius: 20px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         margin-bottom: 20px;
         display: none;
         border: 1px solid #e2e8f0;
       }
-      #login-zone h4 {
-        margin: 0 0 15px 0;
-        text-align: center;
-        color: #64748b;
-      }
 
-      /* Khung soạn bài */
+      /* Khung soạn bài gọn gàng */
       #admin-box {
         background: #ffffff;
-        padding: 20px;
+        padding: 15px;
         border-radius: 20px;
         box-shadow: 0 15px 30px rgba(0, 188, 210, 0.15);
         margin-bottom: 25px;
@@ -70,51 +53,58 @@
       input,
       textarea {
         width: 100%;
-        padding: 12px;
-        margin-bottom: 10px;
+        padding: 10px;
+        margin-bottom: 8px;
         border: 1px solid #e2e8f0;
-        border-radius: 10px;
+        border-radius: 8px;
         font-size: 14px;
         box-sizing: border-box;
-        font-family: inherit;
-      }
-
-      input:focus {
-        border-color: var(--primary);
-        outline: none;
-        background: #faffff;
       }
 
       .btn-post {
         background: var(--primary);
         color: white;
         border: none;
-        padding: 14px;
+        padding: 12px;
         border-radius: 10px;
         font-weight: 700;
         width: 100%;
         cursor: pointer;
-        transition: 0.3s;
-      }
-      .btn-post:hover {
-        background: #00acc1;
       }
 
-      /* Hiển thị bài viết */
+      /* Danh sách bài đăng */
       .post-card {
         background: white;
         border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
+        animation: slideUp 0.5s ease-out;
       }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       .author-bar {
         display: flex;
         align-items: center;
         padding: 12px 15px;
+        justify-content: space-between;
+      }
+      .author-info {
+        display: flex;
+        align-items: center;
       }
       .avatar {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
         background: var(--primary);
         border-radius: 50%;
         color: white;
@@ -124,10 +114,13 @@
         font-weight: bold;
         margin-right: 10px;
       }
+
       .post-img {
         width: 100%;
         height: auto;
         display: block;
+        max-height: 350px;
+        object-fit: cover;
       }
       .post-info {
         padding: 15px;
@@ -136,16 +129,29 @@
         font-size: 1.2rem;
         font-weight: 700;
         margin: 0 0 8px 0;
+        color: #0f172a;
       }
       .post-text {
         font-size: 0.95rem;
         color: #475569;
         line-height: 1.5;
         margin: 0;
+        white-space: pre-wrap;
+      }
+
+      .btn-delete {
+        background: #fee2e2;
+        color: #ef4444;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 11px;
+        cursor: pointer;
+        display: none;
       }
 
       .admin-trigger {
-        margin-top: 30px;
+        margin: 30px 0;
         color: #cbd5e1;
         cursor: pointer;
         font-size: 0.7rem;
@@ -154,60 +160,45 @@
   </head>
   <body>
     <div class="container">
-      <div class="header">
-        <h2>Bản Tin Thầy Khang</h2>
-      </div>
+      <h2 style="text-align: center; color: #0f172a; margin: 20px 0">
+        BẢN TIN THẦY KHANG
+      </h2>
 
       <div id="login-zone">
-        <h4>XÁC THỰC QUẢN TRỊ</h4>
         <input type="text" id="user" placeholder="Tên đăng nhập" />
         <input type="password" id="pass" placeholder="Mật khẩu" />
-        <input type="text" id="otp" placeholder="Mã xác nhận" />
-        <button class="btn-post" onclick="checkLogin()">VÀO HỆ THỐNG</button>
+        <input type="text" id="otp" placeholder="Mã xác nhận 123456" />
+        <button class="btn-post" onclick="checkLogin()">VÀO QUẢN TRỊ</button>
       </div>
 
       <div id="admin-box">
-        <h3 style="text-align: center; color: var(--primary); margin-top: 0">
-          SOẠN TIN MỚI
-        </h3>
-        <input type="text" id="title" placeholder="Tiêu đề quảng cáo" />
+        <input type="text" id="title" placeholder="Tiêu đề bài viết" />
         <textarea
           id="text"
           rows="3"
-          placeholder="Nội dung bài viết..."
+          placeholder="Nội dung chi tiết..."
         ></textarea>
-        <input type="text" id="img" placeholder="Dán link ảnh tại đây" />
+        <label style="font-size: 11px; color: #64748b"
+          >Chọn ảnh khóa học:</label
+        >
+        <input type="file" id="file-input" accept="image/*" />
         <button
           class="btn-post"
           style="background: #4caf50"
           onclick="publish()"
         >
-          XUẤT BẢN BÀI VIẾT
+          ĐĂNG BÀI NGAY
+        </button>
+        <button
+          class="btn-post"
+          style="background: #94a3b8; margin-top: 5px; font-size: 12px"
+          onclick="clearAll()"
+        >
+          XÓA TẤT CẢ BÀI
         </button>
       </div>
 
-      <div id="feed">
-        <div class="post-card">
-          <div class="author-bar">
-            <div class="avatar">K</div>
-            <div>
-              <strong>THẦY KHANG</strong><br /><small style="color: #94a3b8"
-                >Hệ thống Driver</small
-              >
-            </div>
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800"
-            class="post-img"
-          />
-          <div class="post-info">
-            <h2 class="post-title">Khai giảng lớp lái xe mới</h2>
-            <p class="post-text">
-              Nội dung mẫu: Đăng ký ngay để nhận ưu đãi từ Thầy Khang.
-            </p>
-          </div>
-        </div>
-      </div>
+      <div id="feed"></div>
 
       <div
         class="admin-trigger"
@@ -218,55 +209,120 @@
     </div>
 
     <script>
-      // THÔNG TIN ĐĂNG NHẬP CỦA THẦY
-      const AUTH = {
-        user: "thaykhang",
-        pass: "0907488815",
-        otp: "123456",
-      };
+      const AUTH = { user: "thaykhang", pass: "0907488815", otp: "123456" };
+      let selectedImageData = "";
+      let isAdmin = false;
+
+      // Chuyển ảnh sang mã để lưu
+      document
+        .getElementById("file-input")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              selectedImageData = event.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
 
       function checkLogin() {
-        const u = document.getElementById("user").value;
-        const p = document.getElementById("pass").value;
-        const o = document.getElementById("otp").value;
-
-        if (u === AUTH.user && p === AUTH.pass && o === AUTH.otp) {
+        if (
+          document.getElementById("user").value === AUTH.user &&
+          document.getElementById("pass").value === AUTH.pass &&
+          document.getElementById("otp").value === AUTH.otp
+        ) {
+          isAdmin = true;
           document.getElementById("admin-box").style.display = "block";
           document.getElementById("login-zone").style.display = "none";
+          render(); // Hiện nút xóa khi đã login
         } else {
-          alert("Sai thông tin đăng nhập hoặc mã xác nhận!");
+          alert("Sai thông tin!");
         }
       }
 
       function publish() {
-        const d = {
-          t: document.getElementById("title").value,
-          c: document.getElementById("text").value,
-          i: document.getElementById("img").value,
+        const t = document.getElementById("title").value;
+        const c = document.getElementById("text").value;
+        if (!t || !c) return alert("Nhập đủ tiêu đề và nội dung!");
+
+        const newPost = {
+          id: Date.now(),
+          title: t,
+          content: c,
+          image: selectedImageData,
+          date: new Date().toLocaleString("vi-VN"),
         };
-        localStorage.setItem("post_khang_data", JSON.stringify(d));
+
+        let posts = JSON.parse(
+          localStorage.getItem("thay_khang_posts") || "[]",
+        );
+        posts.unshift(newPost); // Thêm bài mới lên đầu danh sách
+        localStorage.setItem("thay_khang_posts", JSON.stringify(posts));
+
+        // Reset form
+        document.getElementById("title").value = "";
+        document.getElementById("text").value = "";
+        document.getElementById("file-input").value = "";
+        selectedImageData = "";
+
         render();
-        alert("Đã đăng tin thành công!");
+        alert("Đã đăng bài!");
+      }
+
+      function deletePost(id) {
+        if (confirm("Xóa bài này?")) {
+          let posts = JSON.parse(
+            localStorage.getItem("thay_khang_posts") || "[]",
+          );
+          posts = posts.filter((p) => p.id !== id);
+          localStorage.setItem("thay_khang_posts", JSON.stringify(posts));
+          render();
+        }
+      }
+
+      function clearAll() {
+        if (confirm("Xóa sạch tất cả bài đăng?")) {
+          localStorage.removeItem("thay_khang_posts");
+          render();
+        }
       }
 
       function render() {
-        const s = localStorage.getItem("post_khang_data");
-        if (s) {
-          const d = JSON.parse(s);
-          document.getElementById("feed").innerHTML = `
-                <div class="post-card">
-                    <div class="author-bar">
-                        <div class="avatar">K</div>
-                        <div><strong>THẦY KHANG</strong><br><small style="color:#94a3b8">Vừa đăng tin</small></div>
-                    </div>
-                    <img src="${d.i || "https://via.placeholder.com/800x450"}" class="post-img">
-                    <div class="post-info">
-                        <h2 class="post-title">${d.t}</h2>
-                        <p class="post-text">${d.c}</p>
-                    </div>
-                </div>`;
+        const posts = JSON.parse(
+          localStorage.getItem("thay_khang_posts") || "[]",
+        );
+        const feed = document.getElementById("feed");
+
+        if (posts.length === 0) {
+          feed.innerHTML =
+            "<p style='text-align:center; color:#94a3b8;'>Chưa có bản tin nào.</p>";
+          return;
         }
+
+        feed.innerHTML = posts
+          .map(
+            (p) => `
+            <div class="post-card">
+                <div class="author-bar">
+                    <div class="author-info">
+                        <div class="avatar">K</div>
+                        <div><strong>THẦY KHANG</strong><br><small style="color:#94a3b8">${p.date}</small></div>
+                    </div>
+                    ${isAdmin ? `<button class="btn-delete" style="display:block" onclick="deletePost(${p.id})">Xóa</button>` : ""}
+                </div>
+                ${p.image ? `<img src="${p.image}" class="post-img">` : ""}
+                <div class="post-info">
+                    <h2 class="post-title">${p.title}</h2>
+                    <p class="post-text">${p.content}</p>
+                </div>
+            </div>
+        `,
+          )
+          .join("");
       }
+
       render();
     </script>
   </body>
