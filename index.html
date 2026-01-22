@@ -217,64 +217,136 @@
   </a>
 
   <style>
-    .zalo-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
+    :root {
+      --primary: #00bcd4;
+      --dark: #1e293b;
+      --light-bg: #f8fafc;
+      --text: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Lexend", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--light-bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* MENU ĐA NỀN TẢNG */
+    nav {
       display: flex;
+      flex-wrap: wrap; /* Tự xuống dòng trên mobile */
+      justify-content: center;
       align-items: center;
-      background: #0084ff;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 50px;
+      gap: 10px;
+      padding: 15px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
       text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      z-index: 9999;
+      color: var(--dark);
+      font-weight: 600;
+      padding: 8px 15px;
+      border-radius: 8px;
+      font-size: 0.95rem;
       transition: 0.3s;
-      animation: pulse-zalo 2s infinite;
     }
 
-    .zalo-float img {
-      width: 30px;
-      height: 30px;
-      margin-right: 8px;
+    nav a:hover,
+    nav a.active {
+      background: #e0f7fa;
+      color: var(--primary);
     }
 
-    .zalo-float:hover {
-      transform: scale(1.1);
-      background: #0073e6;
+    /* BANNER THÔNG MINH */
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+      background:
+        linear-gradient(rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.8)),
+        url("https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200");
+      background-size: cover;
+      background-position: center;
       color: white;
     }
 
-    @keyframes pulse-zalo {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(0, 132, 255, 0.7);
+    .hero h1 {
+      font-size: 2.5rem; /* Mặc định cho Desktop */
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    /* GRID HỆ THỐNG (Chia cột tự động) */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    /* NÚT BẤM DỄ THAO TÁC */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .btn {
+      width: 100%; /* Mobile nút to ngang màn hình */
+      max-width: 300px;
+      padding: 15px 25px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    /* TỐI ƯU RIÊNG CHO MÀN HÌNH LỚN (DESKTOP) */
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 4rem;
       }
-      70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(0, 132, 255, 0);
+      .hero {
+        padding: 100px 20px;
       }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(0, 132, 255, 0);
+      .btn-group {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .btn {
+        width: auto;
+      }
+      nav {
+        gap: 25px;
       }
     }
 
-    /* Tối ưu cho điện thoại nhỏ */
-    @media (max-width: 480px) {
-      .zalo-text {
-        display: none;
-      }
-      .zalo-float {
-        padding: 12px;
-        bottom: 15px;
-        right: 15px;
-      }
-      .zalo-float img {
-        margin-right: 0;
-      }
+    /* TỐI ƯU CHO TRANG BẢN TIN (MOBILE) */
+    .post-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+    .post-card img {
+      width: 100%;
+      height: auto;
     }
   </style>
   <footer class="main-footer">
