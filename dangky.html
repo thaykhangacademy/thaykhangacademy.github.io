@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phiếu Đăng Ký Học Lái Xe - Thầy Khang Academy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Lexend", sans-serif;
+        /* Sử dụng duy nhất 1 màu xanh đậm đà như ảnh Thầy gửi */
+        background-color: #0b2f4e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .form-card {
+        background: white;
+        padding: 40px;
+        border-radius: 25px;
+        width: 100%;
+        max-width: 500px;
+        /* Đổ bóng nhẹ để nổi bật trên nền xanh */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        color: #1a1e29;
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+
+      .input-box {
+        margin-bottom: 20px;
+      }
+
+      .input-box label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #475569;
+      }
+
+      .input-box input,
+      .input-box select {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 1rem;
+        box-sizing: border-box;
+        transition: 0.3s;
+      }
+
+      .input-box input:focus {
+        border-color: #00bcd4;
+        background: #faffff;
+        outline: none;
+      }
+
+      .btn-submit {
+        width: 100%;
+        padding: 15px;
+        background: #00bcd4;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn-submit:hover {
+        background: #0891b2;
+        transform: translateY(-2px);
+      }
+
+      .back-home {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #64748b;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-card">
+      <h1>Ghi Danh Học Lái Xe</h1>
+      <form action="https://formspree.io/f/mwvvddpv" method="POST">
+        <div class="input-box">
+          <label>Họ và tên học viên</label>
+          <input
+            type="text"
+            name="Ho_Ten"
+            placeholder="Nhập đầy đủ họ tên"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <label>Số điện thoại (Zalo)</label>
+          <input
+            type="tel"
+            name="So_Dien_Thoai"
+            placeholder="Để Thầy gọi lại ngay"
+            required
+          />
+        </div>
+        <div class="input-box">
+          <label>Khóa học quan tâm</label>
+          <select name="Khoa_Hoc">
+            <option value="Hạng B">Hạng B (Số sàn/Tự động)</option>
+            <option value="Hạng C">Hạng C (Xe tải)</option>
+            <option value="Bổ túc tay lái">Bổ túc tay lái thực tế</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">XÁC NHẬN ĐĂNG KÝ</button>
+      </form>
+      <a href="index.html" class="back-home"
+        ><i class="fas fa-arrow-left"></i> Quay lại trang chủ</a
+      >
+    </div>
+  </body>
+</html>

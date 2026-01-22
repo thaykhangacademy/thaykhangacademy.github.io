@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thầy Khang Academy - Đào Tạo Lái Xe Chuyên Nghiệp</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">THẦY KHANG <span>ACADEMY</span></div>
+        <ul class="nav-links">
+          <li><a href="#home">Trang Chủ</a></li>
+          <li><a href="#process">Quy Trình</a></li>
+          <li><a href="#courses">Học Phí</a></li>
+          <li><a href="faq.html" target="_blank">Hỏi Đáp</a></li>
+          <li>
+            <a href="tel:0907488815" class="nav-hotline"
+              ><i class="fas fa-phone"></i> 0907.488.815</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="hero-image-container">
+        <img
+          src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=2070&auto=format&fit=crop"
+          alt="Xe tập lái Thầy Khang"
+        />
+      </div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <span class="badge">ĐÀO TẠO UY TÍN TẠI CẦN THƠ & MIỀN TÂY</span>
+          <h1>CHINH PHỤC TAY LÁI <br /><span>AN TOÀN CÙNG THẦY KHANG</span></h1>
+          <p>Cam kết đầu ra - Học phí minh bạch - Không phát sinh chi phí ẩn</p>
+          <div class="hero-btns">
+            <a href="#courses" class="btn-main">XEM HỌC PHÍ</a>
+            <a href="#contact" class="btn-sub">TƯ VẤN MIỄN PHÍ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+        <h2>500+</h2>
+        <p>Học viên tốt nghiệp</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+        <h2>0VNĐ</h2>
+        <p>chi phí phát sinh</p>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fas fa-medal"></i></div>
+        <h2>10+</h2>
+        <p>Năm kinh nghiệm</p>
+      </div>
+    </section>
+
+    <section id="process" class="process-section">
+      <div class="container">
+        <h2 class="section-title">LỘ TRÌNH ĐÀO TẠO CHUẨN</h2>
+        <p class="section-subtitle">
+          (Bấm vào từng bước để xem bài viết hướng dẫn chi tiết)
+        </p>
+
+        <div class="process-grid">
+          <div class="step-card" onclick="openArticle(1)">
+            <div class="step-header">
+              <span class="step-number">01</span>
+              <i class="fas fa-file-signature icon-step"></i>
+            </div>
+            <div class="step-body">
+              <h4>Tư Vấn & Hồ Sơ</h4>
+              <p>
+                Hỗ trợ thu hồ sơ tận nơi. Thủ tục nhanh gọn, minh bạch pháp lý.
+              </p>
+            </div>
+            <div class="step-footer">
+              Đọc bài viết chi tiết <i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+
+          <div class="step-card" onclick="openArticle(2)">
+            <div class="step-header">
+              <span class="step-number">02</span>
+              <i class="fas fa-book-reader icon-step"></i>
+            </div>
+            <div class="step-body">
+              <h4>Lý Thuyết Mẹo</h4>
+              <p>Mẹo nhớ 600 câu hỏi & 120 tình huống mô phỏng độc quyền.</p>
+            </div>
+            <div class="step-footer">
+              Đọc bài viết chi tiết <i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+
+          <div class="step-card" onclick="openArticle(3)">
+            <div class="step-header">
+              <span class="step-number">03</span>
+              <i class="fas fa-car-side icon-step"></i>
+            </div>
+            <div class="step-body">
+              <h4>Thực Hành 1 Kèm 1</h4>
+              <p>
+                Lái xe đời mới, máy lạnh. Thầy Khang trực tiếp kèm sát tay lái.
+              </p>
+            </div>
+            <div class="step-footer">
+              Đọc bài viết chi tiết <i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+
+          <div class="step-card" onclick="openArticle(4)">
+            <div class="step-header">
+              <span class="step-number">04</span>
+              <i class="fas fa-id-card icon-step"></i>
+            </div>
+            <div class="step-body">
+              <h4>Sát Hạch & Có Bằng</h4>
+              <p>Tự tin thi đậu và nhận bằng chính quy sau 15 ngày làm việc.</p>
+            </div>
+            <div class="step-footer">
+              Đọc bài viết chi tiết <i class="fas fa-arrow-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses" class="courses">
+      <h2 class="section-title">KHÓA HỌC TRỌNG ĐIỂM</h2>
+      <div class="course-container">
+        <div class="course-card">
+          <div class="card-header">HẠNG B (SỐ SÀN/TỰ ĐỘNG)</div>
+          <div class="card-body">
+            <div class="card-price">17<span>Triệu</span></div>
+            <ul class="card-features">
+              <li><i class="fas fa-check"></i> Học xe đời mới có máy lạnh</li>
+              <li><i class="fas fa-check"></i> Giờ học linh động T7 & CN</li>
+              <li><i class="fas fa-check"></i> Miễn phí tài liệu & phần mềm</li>
+            </ul>
+            <button class="btn-select" onclick="selectCourse('Hạng B')">
+              CHỌN KHÓA NÀY
+            </button>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="card-header">HẠNG C1 (XE TẢI)</div>
+          <div class="card-body">
+            <div class="card-price">19<span>Triệu</span></div>
+            <ul class="card-features">
+              <li><i class="fas fa-check"></i> Đào tạo xe tải chuyên nghiệp</li>
+              <li><i class="fas fa-check"></i> Sân tập chuẩn sát hạch</li>
+              <li><i class="fas fa-check"></i> Hỗ trợ hồ sơ trả góp</li>
+            </ul>
+            <button class="btn-select" onclick="selectCourse('Hạng C1')">
+              CHỌN KHÓA NÀY
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-bright">
+      <div class="bright-container">
+        <div class="bright-text">
+          <h2>BẠN ĐÃ SẴN SÀNG CHINH PHỤC TAY LÁI?</h2>
+          <p>
+            Để lại thông tin, Thầy Khang sẽ tư vấn lộ trình phù hợp nhất cho
+            riêng bạn.
+          </p>
+        </div>
+        <div class="bright-action">
+          <a href="dangky.html" target="_blank" class="btn-register-now">
+            <i class="fas fa-paper-plane"></i> LIÊN HỆ ĐĂNG KÝ TẠI ĐÂY
+          </a>
+          <p class="hotline-text">
+            Hoặc gọi trực tiếp: <span>0907.488.815</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="logo-footer">THẦY KHANG <span>ACADEMY</span></div>
+        <p class="footer-desc">
+          Đơn vị đào tạo lái xe uy tín hàng đầu tại Cần Thơ và các tỉnh miền
+          Tây. Chúng tôi cam kết mang lại trải nghiệm học lái xe an toàn, tận
+          tâm và minh bạch.
+        </p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>LIÊN KẾT NHANH</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Trang chủ</a></li>
+          <li><a href="#process">Quy trình đào tạo</a></li>
+          <li><a href="#courses">Khóa học & Học phí</a></li>
+          <li><a href="#faq">Câu hỏi thường gặp</a></li>
+          <li><a href="#contact">Liên hệ đăng ký</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>THÔNG TIN LIÊN HỆ</h4>
+        <ul class="footer-info">
+          <li>
+            <i class="fas fa-map-marker-alt"></i> Văn phòng: Quận Ninh Kiều, TP.
+            Cần Thơ
+          </li>
+          <li>
+            <i class="fas fa-phone-alt"></i> Hotline:
+            <strong>0907.488.815</strong>
+          </li>
+          <li><i class="fab fa-zalo"></i> Zalo: 0907.488.815 (Thầy Khang)</li>
+          <li><i class="fas fa-envelope"></i> Email: Khangnhbidv@gmail.com</li>
+          <li>
+            <i class="fas fa-clock"></i> Giờ làm việc: 07:00 - 21:00 (T2 - CN)
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; 2024 - 2026 <strong>Thầy Khang Academy</strong>. Bảo lưu mọi
+        quyền.
+      </p>
+      <p>Thiết kế & Vận hành bởi Thầy Khang Academy Team</p>
+    </div>
+  </footer>
+</html>
