@@ -161,4 +161,73 @@
       >
     </div>
   </body>
+  <a href="https://zalo.me/0907488815" class="zalo-float" target="_blank">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg"
+      alt="Zalo Chat"
+    />
+    <span class="zalo-text">Chat Zalo</span>
+  </a>
+
+  <style>
+    .zalo-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      background: #0084ff;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+      transition: 0.3s;
+      animation: pulse-zalo 2s infinite;
+    }
+
+    .zalo-float img {
+      width: 30px;
+      height: 30px;
+      margin-right: 8px;
+    }
+
+    .zalo-float:hover {
+      transform: scale(1.1);
+      background: #0073e6;
+      color: white;
+    }
+
+    @keyframes pulse-zalo {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 132, 255, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(0, 132, 255, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 132, 255, 0);
+      }
+    }
+
+    /* Tối ưu cho điện thoại nhỏ */
+    @media (max-width: 480px) {
+      .zalo-text {
+        display: none;
+      }
+      .zalo-float {
+        padding: 12px;
+        bottom: 15px;
+        right: 15px;
+      }
+      .zalo-float img {
+        margin-right: 0;
+      }
+    }
+  </style>
 </html>
