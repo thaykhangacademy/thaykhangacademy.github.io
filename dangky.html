@@ -15,26 +15,36 @@
     <style>
       body {
         font-family: "Lexend", sans-serif;
-        /* 1. Sửa màu nền xanh chuẩn của Thầy */
-        background-color: #164257;
+        /* Chèn ảnh nền của Thầy vào đây */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                      url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop');
+          linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+          url("background.jpg");
+
+        /* Giúp ảnh luôn bao phủ toàn màn hình, không bị lặp lại */
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         margin: 0;
-        /* 2. Padding để khi màn hình nhỏ, khung không dính sát mép */
         padding: 15px;
-        box-sizing: border-box;
       }
 
       .form-card {
-        background: white;
+        /* Làm nền trắng hơi trong suốt để nhìn thấy ảnh phía sau */
+        background: rgba(255, 255, 255, 0.9);
         padding: 40px;
         border-radius: 25px;
         width: 100%;
-        max-width: 500px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        box-sizing: border-box;
+        max-width: 450px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        /* Hiệu ứng kính mờ cực sang */
+        backdrop-filter: blur(5px);
       }
 
       h1 {
@@ -60,7 +70,7 @@
       .input-box input,
       .input-box select {
         width: 100%;
-        /* 3. Font-size 16px cực kỳ quan trọng cho Mobile 
+        /* 3. Font-size 16px cực kỳ quan trọng cho Mobile
        để tránh iPhone tự động phóng to (zoom) màn hình khi gõ */
         font-size: 16px;
         padding: 12px;
