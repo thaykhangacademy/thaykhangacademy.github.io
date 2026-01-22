@@ -5,359 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bản Tin Thầy Khang Academy</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
-      :root {
-        --primary: #00bcd4;
-        --bg: #f8fafc;
-        --danger: #ef4444;
-      }
       body {
         font-family: "Lexend", sans-serif;
-        background: var(--bg);
+        background: #f0f2f5;
         margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         padding: 15px;
       }
       .container {
         max-width: 500px;
-        width: 100%;
+        margin: 0 auto;
       }
-
-      /* TIÊU ĐỀ */
-      .header-main {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-      .header-main h1 {
-        font-size: 1.8rem;
-        font-weight: 800;
-        color: #0f172a;
-        margin: 0;
-      }
-      .header-main p {
-        color: var(--primary);
-        font-weight: 600;
-        font-size: 0.8rem;
-        margin: 5px 0;
-      }
-
-      /* KHUNG ĐĂNG NHẬP 3 LỚP */
-      #login-zone {
-        background: white;
-        padding: 25px;
-        border-radius: 25px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        margin-bottom: 25px;
-        display: none;
-        border: 1px solid #e2e8f0;
-      }
-
-      /* KHUNG QUẢN TRỊ (NHƯ FACEBOOK) */
-      #admin-box {
-        background: #ffffff;
-        padding: 25px;
-        border-radius: 25px;
-        box-shadow: 0 20px 40px rgba(0, 188, 212, 0.15);
-        margin-bottom: 30px;
-        display: none;
-        border: 2px solid var(--primary);
-      }
-
-      input,
-      textarea {
-        width: 100%;
-        padding: 14px;
-        margin-bottom: 12px;
-        border: 1px solid #e2e8f0;
-        border-radius: 14px;
-        font-size: 15px;
-        box-sizing: border-box;
-        font-family: inherit;
-      }
-
-      .btn {
-        background: linear-gradient(135deg, #00bcd4, #00acc1);
-        color: white;
-        border: none;
-        padding: 16px;
-        border-radius: 14px;
-        font-weight: 700;
-        width: 100%;
-        cursor: pointer;
-        font-size: 1rem;
-      }
-      .btn-loading {
-        background: #94a3b8 !important;
-        cursor: wait;
-      }
-
-      /* BÀI VIẾT */
       .post-card {
         background: white;
-        border-radius: 28px;
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
         margin-bottom: 25px;
-        border: 1px solid #f1f5f9;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
-      .author-bar {
-        display: flex;
-        align-items: center;
-        padding: 18px 20px;
-        justify-content: space-between;
-      }
-      .avatar {
-        width: 45px;
-        height: 45px;
-        background: var(--primary);
-        border-radius: 50%;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 800;
-        margin-right: 12px;
-      }
-
       .post-img {
         width: 100%;
-        height: auto;
         display: block;
-        max-height: 500px;
-        object-fit: cover;
+        height: auto;
+        border-bottom: 1px solid #eee;
       }
       .post-body {
-        padding: 20px 25px;
+        padding: 20px;
       }
       .post-title {
-        font-size: 1.4rem;
+        font-size: 1.25rem;
         font-weight: 800;
-        color: #0f172a;
-        margin: 0 0 10px 0;
+        color: #1c1e21;
+        margin-bottom: 10px;
+        text-transform: uppercase;
       }
-      .post-text {
-        font-size: 1rem;
-        color: #475569;
+      .post-desc {
+        color: #4b4f56;
         line-height: 1.6;
+        font-size: 1rem;
         white-space: pre-wrap;
-        margin: 0;
       }
-
-      .del-link {
-        color: var(--danger);
-        font-size: 12px;
-        cursor: pointer;
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .admin-footer {
-        margin: 50px 0;
-        color: #cbd5e1;
-        cursor: pointer;
-        font-size: 0.75rem;
+      .loading {
+        text-align: center;
+        padding: 50px;
+        color: #00bcd4;
+        font-weight: bold;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <header class="header-main">
-        <p>Hệ thống Đào tạo lái xe</p>
-        <h1>Thầy Khang Academy</h1>
-      </header>
-
-      <div id="login-zone">
-        <h3 style="text-align: center; margin-top: 0">Xác thực Quản trị</h3>
-        <input type="text" id="user" placeholder="Tên đăng nhập" />
-        <input type="password" id="pass" placeholder="Mật khẩu" />
-        <input type="text" id="otp" placeholder="Mã xác nhận" />
-        <button class="btn" onclick="checkLogin()">VÀO HỆ THỐNG</button>
-      </div>
-
-      <div id="admin-box">
-        <h2 style="text-align: center; color: var(--primary); margin-top: 0">
-          ĐĂNG TIN MỚI
-        </h2>
-        <input type="text" id="p-title" placeholder="Tiêu đề tin nổi bật..." />
-        <textarea
-          id="p-content"
-          rows="4"
-          placeholder="Nội dung chi tiết..."
-        ></textarea>
-
-        <p style="font-size: 12px; color: #64748b; margin-bottom: 5px">
-          Chọn ảnh từ điện thoại (Tự động tải lên vĩnh viễn):
-        </p>
-        <input type="file" id="p-file" accept="image/*" />
-
-        <button
-          id="btn-post"
-          class="btn"
-          style="background: #10b981"
-          onclick="startPublish()"
-        >
-          XUẤT BẢN BÀI VIẾT
-        </button>
-        <button
-          class="btn"
-          style="background: #94a3b8; margin-top: 10px; font-size: 12px"
-          onclick="clearAll()"
-        >
-          XÓA TẤT CẢ TIN
-        </button>
-      </div>
-
-      <div id="feed"></div>
-
-      <div class="admin-footer" onclick="toggleLogin()">
-        © Quản trị viên hệ thống
+      <h2 style="text-align: center; color: #00bcd4; margin-bottom: 30px">
+        📰 BẢN TIN TRỰC TUYẾN
+      </h2>
+      <div id="feed" class="loading">
+        Đang kết nối kho dữ liệu Thầy Khang...
       </div>
     </div>
 
     <script>
-      // THÔNG TIN CỦA THẦY
-      const API_KEY = "0d02528a7eecfcc11e8bb8d363c2a831";
-      const AUTH = { u: "thaykhang", p: "0907488815", o: "123456" };
-      let isAdmin = false;
+      // Link Google Sheets của Thầy (Đã ở định dạng tsv)
+      const SHEET_LINK =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vTu4-aq3yRoxi2Pdobbkvbl9awUlGxD5PNcMkyA4KxZVxxwIJarWhWynmckU_q9KUJ4DQQxGxzrnYEs/pub?output=tsv";
 
-      function toggleLogin() {
-        const zone = document.getElementById("login-zone");
-        zone.style.display = zone.style.display === "block" ? "none" : "block";
-      }
-
-      function checkLogin() {
-        // Thêm .trim() để tự động xóa dấu cách thừa ở đầu/cuối
-        const u = document.getElementById("user").value.trim();
-        const p = document.getElementById("pass").value.trim();
-        const o = document.getElementById("otp").value.trim();
-
-        if (u === AUTH.u && p === AUTH.p && o === AUTH.o) {
-          isAdmin = true;
-          document.getElementById("admin-box").style.display = "block";
-          document.getElementById("login-zone").style.display = "none";
-          render();
-          alert("Chào Thầy! Đã kích hoạt quyền đăng bài.");
-        } else {
-          alert(
-            "Thông tin xác thực không đúng! Thầy kiểm tra lại viết hoa/viết thường nhé.",
-          );
-        }
-      }
-
-      async function startPublish() {
-        const fileInput = document.getElementById("p-file");
-        const title = document.getElementById("p-title").value;
-        const content = document.getElementById("p-content").value;
-        const btn = document.getElementById("btn-post");
-
-        if (!title || !content || !fileInput.files[0]) {
-          return alert("Thầy ơi, cần đủ: Tiêu đề, Nội dung và Ảnh ạ!");
-        }
-
-        btn.innerText = "ĐANG TẢI ẢNH LÊN KHO... CHỜ GIÂY LÁT...";
-        btn.classList.add("btn-loading");
-
-        // TỰ ĐỘNG ĐẨY ẢNH LÊN IMGBB
-        const formData = new FormData();
-        formData.append("image", fileInput.files[0]);
-
-        try {
-          const resp = await fetch(
-            `https://api.imgbb.com/1/upload?key=${API_KEY}`,
-            {
-              method: "POST",
-              body: formData,
-            },
-          );
-          const res = await resp.json();
-          const linkAnhVinhVien = res.data.url;
-
-          // LƯU VÀO DANH SÁCH
-          const post = {
-            id: Date.now(),
-            t: title,
-            c: content,
-            i: linkAnhVinhVien,
-            d: new Date().toLocaleString("vi-VN"),
-          };
-
-          let list = JSON.parse(
-            localStorage.getItem("thaykhang_final_posts") || "[]",
-          );
-          list.unshift(post);
-          localStorage.setItem("thaykhang_final_posts", JSON.stringify(list));
-
-          // RESET
-          document.getElementById("p-title").value = "";
-          document.getElementById("p-content").value = "";
-          document.getElementById("p-file").value = "";
-
-          btn.innerText = "XUẤT BẢN BÀI VIẾT";
-          btn.classList.remove("btn-loading");
-          render();
-          alert("ĐÃ ĐĂNG THÀNH CÔNG! Mọi máy khác giờ đã xem được ảnh.");
-        } catch (e) {
-          alert("Lỗi tải ảnh rồi Thầy ơi!");
-          btn.innerText = "XUẤT BẢN BÀI VIẾT";
-        }
-      }
-
-      function deletePost(id) {
-        if (confirm("Thầy muốn xóa bài đăng này?")) {
-          let list = JSON.parse(
-            localStorage.getItem("thaykhang_final_posts") || "[]",
-          );
-          list = list.filter((p) => p.id !== id);
-          localStorage.setItem("thaykhang_final_posts", JSON.stringify(list));
-          render();
-        }
-      }
-
-      function clearAll() {
-        if (confirm("Xóa sạch toàn bộ bản tin?")) {
-          localStorage.removeItem("thaykhang_final_posts");
-          render();
-        }
-      }
-
-      function render() {
-        const list = JSON.parse(
-          localStorage.getItem("thaykhang_final_posts") || "[]",
-        );
+      async function loadData() {
         const feed = document.getElementById("feed");
-        if (list.length === 0) {
-          feed.innerHTML =
-            "<p style='text-align:center; color:#94a3b8; padding:50px;'>Chưa có bản tin nào được đăng.</p>";
-          return;
-        }
+        try {
+          const res = await fetch(SHEET_LINK);
+          const text = await res.text();
+          // Chia hàng và bỏ dòng tiêu đề
+          const rows = text.split("\n").slice(1);
 
-        feed.innerHTML = list
-          .map(
-            (p) => `
-            <div class="post-card">
-                <div class="author-bar">
-                    <div style="display:flex; align-items:center;">
-                        <div class="avatar">K</div>
-                        <div><strong>THẦY KHANG</strong><br><small style="color:#94a3b8">${p.d}</small></div>
-                    </div>
-                    ${isAdmin ? `<span class="del-link" onclick="deletePost(${p.id})">Xóa bài</span>` : ""}
-                </div>
-                <img src="${p.i}" class="post-img">
-                <div class="post-body">
-                    <h2 class="post-title">${p.t}</h2>
-                    <p class="post-text">${p.c}</p>
-                </div>
-            </div>
-        `,
-          )
-          .join("");
+          let html = "";
+          // Đảo ngược để tin mới nhất hiện lên đầu
+          rows.reverse().forEach((row) => {
+            const cols = row.split("\t"); // Tách cột bằng phím Tab
+            if (cols.length >= 3 && cols[0].trim() !== "") {
+              html += `
+                        <div class="post-card">
+                            <img src="${cols[2].trim()}" class="post-img" onerror="this.src='https://placehold.co/600x400?text=Thay+Khang+Academy'">
+                            <div class="post-body">
+                                <div class="post-title">${cols[0]}</div>
+                                <div class="post-desc">${cols[1]}</div>
+                            </div>
+                        </div>`;
+            }
+          });
+          feed.innerHTML =
+            html ||
+            "<p style='text-align:center;'>Chưa có tin đăng nào trong kho dữ liệu.</p>";
+        } catch (e) {
+          feed.innerHTML =
+            "<p style='text-align:center; color:red;'>Lỗi kết nối. Thầy kiểm tra lại link Google Sheets nhé!</p>";
+        }
       }
-      render();
+      loadData();
     </script>
   </body>
 </html>
