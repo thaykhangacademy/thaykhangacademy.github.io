@@ -310,6 +310,7 @@ header {
   padding: 80px 5%;
   background-color: #f8fafc;
 }
+
 .section-subtitle {
   text-align: center;
   color: #64748b;
@@ -318,81 +319,97 @@ header {
   font-weight: 300;
 }
 
-/* Lưới hiển thị 4 cột */
+/* Lưới hiển thị - ÉP DÀN HÀNG NGANG TRIỆT ĐỂ */
 .process-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  max-width: 1400px; /* Nới rộng để 4 ô nằm thoải mái */
   margin: 0 auto;
+  flex-wrap: nowrap; /* Không cho xuống hàng trên máy tính */
 }
 
-/* Thiết kế từng cái khung (Card) */
+/* Thiết kế Card hình chữ nhật đứng như cũ */
 .step-card {
   background: #ffffff;
   border-radius: 20px;
-  padding: 30px;
+  padding: 30px 20px;
+  flex: 1; /* Chia đều 4 ô */
+  min-width: 250px; /* Đảm bảo không bị quá hẹp */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   position: relative;
-  overflow: hidden;
+  text-align: left; /* Căn trái nội dung */
 }
 
-/* Hiệu ứng khi Thầy di chuột vào */
 .step-card:hover {
   transform: translateY(-10px);
-  border-color: var(--primary);
+  border-color: #00bcd4;
   box-shadow: 0 20px 40px rgba(0, 188, 212, 0.15);
 }
 
 .step-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  margin-bottom: 15px;
 }
+
 .step-number {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 800;
   color: #f1f5f9;
-  transition: 0.3s;
-}
-.step-card:hover .step-number {
-  color: #e0f7fa;
 }
 
 .icon-step {
   font-size: 1.8rem;
-  color: var(--primary);
+  color: #00bcd4;
+}
+
+.step-body {
+  flex-grow: 1;
 }
 
 .step-body h4 {
-  font-size: 1.3rem;
-  margin-bottom: 12px;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
   color: #1e293b;
   font-weight: 700;
 }
+
 .step-body p {
   color: #64748b;
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .step-footer {
-  margin-top: 25px;
+  margin-top: 20px;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  color: #00bcd4;
 }
 
+/* Chỉ xuống hàng khi xem trên điện thoại */
+@media (max-width: 1024px) {
+  .process-grid {
+    flex-wrap: wrap;
+  }
+  .step-card {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 650px) {
+  .step-card {
+    flex: 1 1 100%;
+  }
+}
 /* Chỉnh lại Modal bài viết cho đẹp */
 .modal-content {
   border-radius: 30px;
@@ -530,52 +547,137 @@ header {
   border-radius: 50%;
 }
 
+/* Dòng 533 - PHẦN CONTACT BRIGHT */
+.contact-bright {
+  background: #e0f7fa;
+  padding: 80px 5%;
+  position: relative;
+}
+
 .bright-container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
-  position: relative;
-  z-index: 2;
+  gap: 60px;
+}
+
+.bright-text {
+  flex: 1;
+}
+
+.bright-text h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 15px;
+  line-height: 1.3;
+}
+
+.bright-text p {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.bright-action {
+  text-align: center;
 }
 
 .btn-register-now {
   display: inline-block;
-  padding: 20px 50px;
-  background: linear-gradient(
-    135deg,
-    #00bcd4 0%,
-    #0891b2 100%
-  ); /* Nút cũng chuyển màu cho đồng bộ */
+  padding: 18px 45px;
+  background: #00bcd4;
   color: white;
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 800;
-  border-radius: 50px;
-  box-shadow: 0 10px 20px rgba(0, 188, 212, 0.2);
-  transition: all 0.4s ease;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .btn-register-now:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 188, 212, 0.4);
-  filter: brightness(1.1);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 188, 212, 0.4);
 }
 
 .hotline-text {
   margin-top: 20px;
   color: #64748b;
   font-weight: 500;
+  font-size: 0.95rem;
 }
 
 .hotline-text span {
-  color: #ef4444; /* Màu đỏ cho số hotline nổi bật */
+  color: #ff4757;
   font-weight: 800;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+}
+/* Dòng 577 */
+/* Cấu trúc bong bóng chat Zalo */
+/* Nút Zalo tỏa sáng như đèn */
+.zalo-chat-bubble {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  background: #0084ff;
+  padding: 12px 25px;
+  border-radius: 12px; /* Hình thoi dài bo góc nhẹ cho nam tính */
+
+  /* Hiệu ứng phát sáng như đèn neon */
+  box-shadow:
+    0 0 15px rgba(0, 132, 255, 0.8),
+    0 0 30px rgba(0, 132, 255, 0.4),
+    0 0 45px rgba(0, 132, 255, 0.2);
+
+  transition: all 0.3s ease;
+  animation: glow-lamp 2s infinite alternate; /* Nhịp thở phát sáng */
 }
 
+/* Hiệu ứng hào quang tỏa sáng nhịp nhàng */
+@keyframes glow-lamp {
+  from {
+    box-shadow:
+      0 0 10px rgba(0, 132, 255, 0.6),
+      0 0 20px rgba(0, 132, 255, 0.3);
+    filter: brightness(1);
+  }
+  to {
+    box-shadow:
+      0 0 25px rgba(0, 132, 255, 0.9),
+      0 0 50px rgba(0, 132, 255, 0.5);
+    filter: brightness(1.2); /* Sáng rực lên như đèn */
+  }
+}
+
+/* Icon Zalo giữ nguyên hình dáng, không bo tròn */
+.zalo-icon img {
+  width: 35px;
+  height: auto;
+  display: block;
+  /* Giữ nguyên hình chữ nhật/vuông bo nhẹ của logo gốc */
+}
+
+.zalo-text {
+  color: white !important;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-left: 12px;
+  text-transform: uppercase; /* Cho chữ nổi bật hẳn lên */
+  letter-spacing: 0.5px;
+}
+
+.zalo-chat-bubble:hover {
+  transform: scale(1.05) translateY(-5px);
+  filter: brightness(1.4);
+}
 /* Hiệu ứng cho mobile */
 @media (max-width: 768px) {
   .bright-container {
@@ -627,4 +729,26 @@ header {
 
 .cta-contact-fast i {
   color: #00bcd4;
+}
+/* Nút Bản Tin nổi bật */
+/* Nút Bản Tin hình vuông bo cong */
+.nav-links a.btn-news-square {
+  background-color: #00bcd4; /* Màu xanh thương hiệu */
+  color: #ffffff !important; /* Chữ trắng tinh */
+  font-weight: 800;
+  text-decoration: none;
+  padding: 10px 20px !important; /* Chỉnh padding để tạo dáng hình chữ nhật/vuông cân đối */
+  border-radius: 8px; /* Bo cong nhẹ (không tròn xoe) */
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 188, 212, 0.2);
+  text-align: center;
+}
+
+/* Hiệu ứng khi di chuột vào */
+.nav-links a.btn-news-square:hover {
+  background-color: #00acc1; /* Đậm hơn một chút */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 188, 212, 0.3);
+  color: #ffffff !important;
 }

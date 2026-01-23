@@ -2,8 +2,11 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bản Tin Thầy Khang Academy</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Bản Tin Thầy Khang</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;800&display=swap"
       rel="stylesheet"
@@ -11,98 +14,89 @@
     <style>
       body {
         font-family: "Lexend", sans-serif;
-        background: #f0f2f5;
+        background: #f4f7f6;
         margin: 0;
-        padding: 15px;
+        padding: 0;
+        color: #2d3436;
       }
       .container {
-        max-width: 500px;
+        max-width: 600px;
         margin: 0 auto;
+        padding: 15px;
       }
       .post-card {
         background: white;
-        border-radius: 20px;
+        border-radius: 15px;
         overflow: hidden;
-        margin-bottom: 25px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        border: 1px solid #eee;
       }
       .post-img {
         width: 100%;
-        display: block;
         height: auto;
-        border-bottom: 1px solid #eee;
+        display: block;
+        object-fit: cover;
       }
-      .post-body {
-        padding: 20px;
+      .post-info {
+        padding: 15px;
       }
       .post-title {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         font-weight: 800;
-        color: #1c1e21;
-        margin-bottom: 10px;
+        color: #00bcd4;
+        margin-bottom: 8px;
         text-transform: uppercase;
       }
-      .post-desc {
-        color: #4b4f56;
+      .post-text {
+        font-size: 0.95rem;
         line-height: 1.6;
-        font-size: 1rem;
-        white-space: pre-wrap;
-      }
-      .loading {
-        text-align: center;
-        padding: 50px;
-        color: #00bcd4;
-        font-weight: bold;
+        color: #636e72;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h2 style="text-align: center; color: #00bcd4; margin-bottom: 30px">
-        📰 BẢN TIN TRỰC TUYẾN
+      <h2
+        style="
+          text-align: center;
+          font-weight: 800;
+          color: #2d3436;
+          margin: 20px 0;
+        "
+      >
+        HÀNH TRÌNH THẦY KHANG
       </h2>
-      <div id="feed" class="loading">
-        Đang kết nối kho dữ liệu Thầy Khang...
-      </div>
+      <div id="feed">Đang tải dữ liệu...</div>
     </div>
 
     <script>
-      // Link Google Sheets của Thầy (Đã ở định dạng tsv)
-      const SHEET_LINK =
+      const URL =
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vTu4-aq3yRoxi2Pdobbkvbl9awUlGxD5PNcMkyA4KxZVxxwIJarWhWynmckU_q9KUJ4DQQxGxzrnYEs/pub?output=tsv";
-
-      async function loadData() {
-        const feed = document.getElementById("feed");
+      async function load() {
         try {
-          const res = await fetch(SHEET_LINK);
-          const text = await res.text();
-          // Chia hàng và bỏ dòng tiêu đề
-          const rows = text.split("\n").slice(1);
-
+          const r = await fetch(URL);
+          const t = await r.text();
+          const rows = t.split("\n").slice(1);
           let html = "";
-          // Đảo ngược để tin mới nhất hiện lên đầu
           rows.reverse().forEach((row) => {
-            const cols = row.split("\t"); // Tách cột bằng phím Tab
-            if (cols.length >= 3 && cols[0].trim() !== "") {
-              html += `
-                        <div class="post-card">
-                            <img src="${cols[2].trim()}" class="post-img" onerror="this.src='https://placehold.co/600x400?text=Thay+Khang+Academy'">
-                            <div class="post-body">
-                                <div class="post-title">${cols[0]}</div>
-                                <div class="post-desc">${cols[1]}</div>
+            const c = row.split("\t");
+            if (c.length >= 3) {
+              html += `<div class="post-card">
+                            <img src="${c[2].trim()}" class="post-img">
+                            <div class="post-info">
+                                <div class="post-title">${c[0]}</div>
+                                <div class="post-text">${c[1]}</div>
                             </div>
                         </div>`;
             }
           });
-          feed.innerHTML =
-            html ||
-            "<p style='text-align:center;'>Chưa có tin đăng nào trong kho dữ liệu.</p>";
+          document.getElementById("feed").innerHTML = html;
         } catch (e) {
-          feed.innerHTML =
-            "<p style='text-align:center; color:red;'>Lỗi kết nối. Thầy kiểm tra lại link Google Sheets nhé!</p>";
+          document.getElementById("feed").innerHTML = "Lỗi kết nối dữ liệu!";
         }
       }
-      loadData();
+      load();
     </script>
   </body>
 </html>
