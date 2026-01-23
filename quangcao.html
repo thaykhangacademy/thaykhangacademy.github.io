@@ -14,7 +14,7 @@
     <style>
       body {
         font-family: "Lexend", sans-serif;
-        background: #f4f7f6;
+        background: #f1f5f9;
         margin: 0;
         padding: 0;
         color: #2d3436;
@@ -24,76 +24,97 @@
         margin: 0 auto;
         padding: 15px;
       }
-      .post-card {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        margin-bottom: 20px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        border: 1px solid #eee;
-      }
-      .post-img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover;
-      }
-      .post-info {
-        padding: 15px;
-      }
-      .post-title {
-        font-size: 1.2rem;
+      .header-title {
+        text-align: center;
         font-weight: 800;
-        color: #00bcd4;
-        margin-bottom: 8px;
+        color: #1e293b;
+        margin: 30px 0;
+        letter-spacing: 1px;
         text-transform: uppercase;
       }
+      .post-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 25px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        transition: transform 0.2s;
+      }
+      .post-card:active {
+        transform: scale(0.98);
+      } /* Hiệu ứng nhấn trên mobile */
+
+      .post-img {
+        width: 100%;
+        aspect-ratio: 16 / 9; /* Giữ khung hình luôn chuẩn */
+        object-fit: cover;
+        display: block;
+        background: #e2e8f0;
+      }
+      .post-info {
+        padding: 20px;
+      }
+      .post-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #00bcd4;
+        margin-bottom: 10px;
+        line-height: 1.4;
+      }
       .post-text {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: #636e72;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #475569;
+        white-space: pre-line; /* Giữ nguyên xuống dòng từ Google Sheets */
+      }
+      #loading {
+        text-align: center;
+        color: #64748b;
+        padding: 50px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h2
-        style="
-          text-align: center;
-          font-weight: 800;
-          color: #2d3436;
-          margin: 20px 0;
-        "
-      >
-        HÀNH TRÌNH THẦY KHANG
-      </h2>
-      <div id="feed">Đang tải dữ liệu...</div>
+      <h2 class="header-title">HÀNH TRÌNH THẦY KHANG</h2>
+      <div id="feed"><div id="loading">Đang tải bản tin mới nhất...</div></div>
     </div>
 
     <script>
+      // Sửa lại URL chuẩn (output=tsv)
       const URL =
-        https://docs.google.com/spreadsheets/d/e/2PACX-1vT9F_NCs6klwtyyLN5HH1YASOO7n-UFmo-zAALsMKLU3j5bbmVxPj-EhH9XeQDtJRIw25fXAiiIwaup/pub?output=tsvcd
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vT9F_NCs6klwtyyLN5HH1YASOO7n-UFmo-zAALsMKLU3j5bbmVxPj-EhH9XeQDtJRIw25fXAiiIwaup/pub?output=tsv";
+
       async function load() {
         try {
           const r = await fetch(URL);
           const t = await r.text();
-          const rows = t.split("\n").slice(1);
+          // Lọc bỏ hàng rỗng và chia hàng
+          const rows = t
+            .split("\n")
+            .filter((row) => row.trim() !== "")
+            .slice(1);
+
           let html = "";
           rows.reverse().forEach((row) => {
             const c = row.split("\t");
-            if (c.length >= 3) {
-              html += `<div class="post-card">
-                            <img src="${c[2].trim()}" class="post-img">
-                            <div class="post-info">
-                                <div class="post-title">${c[0]}</div>
-                                <div class="post-text">${c[1]}</div>
-                            </div>
-                        </div>`;
+            if (c.length >= 3 && c[2].trim() !== "") {
+              html += `
+                <div class="post-card">
+                    <img src="${c[2].trim()}" class="post-img" onerror="this.src='https://placehold.co/600x400?text=Thay+Khang+Academy'">
+                    <div class="post-info">
+                        <div class="post-title">${c[0].trim()}</div>
+                        <div class="post-text">${c[1].trim()}</div>
+                    </div>
+                </div>`;
             }
           });
-          document.getElementById("feed").innerHTML = html;
+          document.getElementById("feed").innerHTML =
+            html || "<p style='text-align:center'>Chưa có bản tin nào.</p>";
         } catch (e) {
-          document.getElementById("feed").innerHTML = "Lỗi kết nối dữ liệu!";
+          document.getElementById("feed").innerHTML =
+            "<div id='loading'>Lỗi kết nối dữ liệu! Thầy kiểm tra lại link Sheets nhé.</div>";
         }
       }
       load();
