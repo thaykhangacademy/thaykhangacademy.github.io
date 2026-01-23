@@ -127,7 +127,7 @@ function openArticle(id) {
     },
     3: {
       title: "BƯỚC 3: THỰC HÀNH 1 KÈM 1 TRÊN XE ĐỜI MỚI",
-      content: `Đây là giai đoạn tạo nên sự khác biệt của Thầy Khang Academy. Học viên được trực tiếp cầm lái trên dàn xe Vios đời mới, trang bị đầy đủ máy lạnh và hệ thống phanh phụ an toàn. Với phương pháp đào tạo 'Cầm tay chỉ việc', Thầy sẽ theo sát từng động tác đánh lái, cách kiểm soát chân côn, chân ga và kỹ năng quan sát thực tế. Không chỉ bó hẹp trong sân tập sa hình, Thầy còn đưa bạn trải nghiệm các cung đường trường tại Cần Thơ để rèn luyện tâm lý vững vàng và kỹ năng xử lý tình huống giao thông thực tế - những kinh nghiệm quý báu không có trong sách vở.`,
+      content: `Đây là giai đoạn tạo nên sự khác biệt của Thầy Khang Academy. Học viên được trực tiếp cầm lái trên dàn xe Toyota, Hyundai, Suzuki,... đời mới, trang bị đầy đủ máy lạnh và hệ thống phanh phụ an toàn. Với phương pháp đào tạo 'Cầm tay chỉ việc', Thầy sẽ theo sát từng động tác đánh lái, cách kiểm soát chân côn, chân ga và kỹ năng quan sát thực tế. Không chỉ bó hẹp trong sân tập sa hình, Thầy còn đưa bạn trải nghiệm các cung đường trường tại Cần Thơ để rèn luyện tâm lý vững vàng và kỹ năng xử lý tình huống giao thông thực tế - những kinh nghiệm quý báu không có trong sách vở.`,
     },
     4: {
       title: "BƯỚC 4: SÁT HẠCH & NHẬN BẰNG CHÍNH QUY",
