@@ -806,3 +806,50 @@ header {
     padding: 40px 20px;
   }
 }
+/* Nút Tư vấn miễn phí (Viền trắng, Chữ trắng, nền trong suốt hoặc đậm) */
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid #ffffff; /* Viền trắng sang trọng */
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 50px; /* Bo cong tròn */
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  background: transparent; /* Nền trong suốt để thấy ảnh xe phía sau */
+}
+
+/* Hiệu ứng khi di chuột vào */
+.btn-secondary:hover {
+  background-color: #ffffff; /* Đổi thành nền trắng */
+  color: #1e293b !important; /* Chữ chuyển sang màu tối */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Fix cho Mobile: Nút tự xuống dòng và to ra dễ bấm */
+@media (max-width: 768px) {
+  .btn-secondary {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    text-align: center;
+    padding: 15px;
+  }
+}
+.btn-secondary {
+  display: inline-flex; /* Dùng flex để căn giữa */
+  align-items: center; /* Giữa theo chiều dọc */
+  justify-content: center; /* Giữa theo chiều ngang */
+  padding: 12px 30px; /* Bỏ padding lẻ, dùng số chẵn cho cân */
+  border: 2px solid #ffffff;
+  color: #ffffff !important;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1; /* Ép dòng về 1 để không bị đẩy chữ */
+  height: 48px; /* Cố định chiều cao để dễ kiểm soát */
+  box-sizing: border-box;
+}
