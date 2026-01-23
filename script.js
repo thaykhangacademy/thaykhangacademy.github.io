@@ -18,7 +18,7 @@ function selectCourse(type) {
       title: "THÔNG TIN CHI TIẾT KHÓA ĐÀO TẠO LÁI XE HẠNG B (Cơ khí/Tự động)",
       content: `
                 <h3>1. Tổng quan về giấy phép lái xe Hạng B</h3>
-                <p>Hạng B là loại bằng lái phổ biến nhất hiện nay, cho phép điều khiển xe ô tô chở người đến 9 chỗ ngồi và xe tải dưới 3,5 tấn. Tại Thầy Khang Academy, chúng tôi phân loại rõ ràng: <strong>B1 (Số tự động)</strong> dành cho nhu cầu gia đình và <strong>B2 (Số sàn)</strong> dành cho cả nhu cầu gia đình lẫn kinh doanh vận tải.</p>
+                <p>Hạng B là loại bằng lái phổ biến nhất hiện nay, cho phép điều khiển xe ô tô chở người đến 9 chỗ ngồi và xe tải dưới 3,5 tấn. Tại Thầy Khang Academy, chúng tôi phân loại rõ ràng: <strong>B (Số Tự Động)</strong> dành cho nhu cầu gia đình và <strong>B (Cơ khí)</strong> dành cho cả nhu cầu gia đình lẫn kinh doanh vận tải.</p>
                 
                 <h3>2. Lộ trình đào tạo thực tế</h3>
                 <ul>
@@ -38,7 +38,7 @@ function selectCourse(type) {
       title: "THÔNG TIN CHI TIẾT KHÓA ĐÀO TẠO LÁI XE HẠNG C1 (XE TẢI)",
       content: `
                 <h3>1. Đặc thù của bằng lái Hạng C</h3>
-                <p>Giấy phép lái xe hạng C1 (thường gọi là bằng xe tải) cho phép điều khiển xe tải trên 3,5 tấn và các loại xe thuộc hạng B1, B2. Đây là sự lựa chọn hàng đầu cho những học viên có định hướng hành nghề lái xe chuyên nghiệp hoặc kinh doanh vận tải nặng.</p>
+                <p>Giấy phép lái xe hạng C1 (thường gọi là bằng xe tải) cho phép điều khiển xe tải trên 3,5 tấn và các loại xe thuộc hạng B(Cơ khí / Tự động). Đây là sự lựa chọn hàng đầu cho những học viên có định hướng hành nghề lái xe chuyên nghiệp hoặc kinh doanh vận tải nặng.</p>
                 
                 <h3>2. Nội dung đào tạo chuyên sâu</h3>
                 <ul>
