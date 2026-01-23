@@ -752,3 +752,57 @@ header {
   box-shadow: 0 6px 15px rgba(0, 188, 212, 0.3);
   color: #ffffff !important;
 }
+/* --- CHO DESKTOP (Màn hình lớn) --- */
+@media (min-width: 1025px) {
+  .hero-content h1 {
+    font-size: 3rem;
+  } /* Chữ to cho sang */
+  .step-card {
+    flex: 1;
+  } /* 4 ô dàn hàng ngang */
+}
+
+/* --- CHO TABLET (Màn hình vừa) --- */
+@media (max-width: 1024px) {
+  .step-card {
+    flex: 1 1 45%;
+  } /* Hiện 2 ô một hàng */
+}
+
+/* --- CHO MOBILE (Điện thoại - Quan trọng nhất) --- */
+@media (max-width: 768px) {
+  /* Hạ size chữ xuống để không bị ngắt dòng khó chịu */
+  h1 {
+    font-size: 1.6rem !important;
+  }
+  h2 {
+    font-size: 1.4rem !important;
+  }
+  p {
+    font-size: 0.9rem !important;
+  }
+
+  /* Ép tất cả dàn hàng dọc cho dễ đọc */
+  .process-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .step-card {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  /* Nút bấm phải to ra cho dễ chạm tay */
+  .btn-hero,
+  .btn-news-square {
+    padding: 12px 20px !important;
+    width: 90%; /* Gần full màn hình điện thoại */
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .hero-content {
+    text-align: center; /* Căn giữa toàn bộ chữ và nút */
+    padding: 40px 20px;
+  }
+}
