@@ -1,4 +1,63 @@
-// Hàm xử lý bấm vào câu hỏi để xổ bài viết ra
+// URL gốc từ Sheets
+const BASE_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vT9F_NCs6klwtyyLN5HH1YASOO7n-UFmo-zAALsMKLU3j5bbmVxPj-EhH9XeQDtJRIw25fXAiiIwaup/pub?output=tsv";
+
+let lastData = ""; // Biến để so sánh dữ liệu cũ và mới
+
+async function load() {
+  try {
+    // Mỗi lần tải sẽ thêm mã thời gian để ép trình duyệt lấy bản mới nhất từ Google
+    const finalURL = BASE_URL + "&t=" + new Date().getTime();
+    const r = await fetch(finalURL);
+    const t = await r.text();
+
+    // Nếu dữ liệu không có gì thay đổi so với lần tải trước thì không render lại (đỡ lag)
+    if (t === lastData) return;
+    lastData = t;
+
+    const rows = t
+      .split("\n")
+      .filter((row) => row.trim() !== "")
+      .slice(1);
+
+    let html = "";
+    rows.reverse().forEach((row) => {
+      const c = row.split("\t");
+      if (c.length >= 3 && c[2].trim() !== "") {
+        html += `
+                <div class="post-card">
+                    <img src="${c[2].trim()}" class="post-img" onerror="this.src='https://placehold.co/600x400?text=Thay+Khang+Academy'">
+                    <div class="post-info">
+                        <div class="post-title">${c[0].trim()}</div>
+                        <div class="post-text">${c[1].trim()}</div>
+                    </div>
+                </div>`;
+      }
+    });
+
+    document.getElementById("feed").innerHTML =
+      html || "<p style='text-align:center'>Chưa có bản tin nào.</p>";
+
+    console.log(
+      "Đã cập nhật bản tin mới nhất lúc: " + new Date().toLocaleTimeString(),
+    );
+  } catch (e) {
+    // Chỉ hiện lỗi nếu lần tải đầu tiên thất bại
+    if (!lastData) {
+      document.getElementById("feed").innerHTML =
+        "<div id='loading'>Lỗi kết nối dữ liệu! Thầy kiểm tra lại link Sheets nhé.</div>";
+    }
+  }
+}
+
+// 1. Chạy ngay khi mở trang
+load();
+
+// 2. Reset và tải lại liên tục sau mỗi 30 giây
+setInterval(load, 30000);
+
+// 3. Ép trang luôn nhảy lên đầu khi học viên vào lại
+window.onload = () => window.scrollTo(0, 0);
 function toggleFaq(button) {
   const card = button.parentElement;
   card.classList.toggle("active");
@@ -11,7 +70,10 @@ function toggleFaq(button) {
     icon.style.transform = "rotate(0deg)";
   }
 }
-
+window.onload = function () {
+  window.scrollTo(0, 0);
+  load(); // Gọi hàm tải dữ liệu
+};
 function selectCourse(type) {
   const data = {
     "Hạng B": {

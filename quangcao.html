@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="vi">
   <head>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -82,15 +88,30 @@
     </div>
 
     <script>
-      // Sửa lại URL chuẩn (output=tsv)
-      const URL =
+      // URL gốc từ Sheets
+      const BASE_URL =
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vT9F_NCs6klwtyyLN5HH1YASOO7n-UFmo-zAALsMKLU3j5bbmVxPj-EhH9XeQDtJRIw25fXAiiIwaup/pub?output=tsv";
+
+      let lastData = "";
 
       async function load() {
         try {
-          const r = await fetch(URL);
+          // --- BƯỚC QUAN TRỌNG: RESET GIAO DIỆN ---
+          // Mỗi lần hàm này chạy, nó sẽ xóa sạch bài cũ và hiện thông báo chờ
+          document.getElementById("feed").innerHTML =
+            '<div id="loading">Đang làm mới bản tin...</div>';
+
+          // Ép trình duyệt lấy bản mới nhất bằng mã thời gian
+          const finalURL = BASE_URL + "&t=" + new Date().getTime();
+          const r = await fetch(finalURL);
           const t = await r.text();
-          // Lọc bỏ hàng rỗng và chia hàng
+
+          // Nếu dữ liệu giống hệt bản cũ thì vẫn hiện lại bài để tránh màn hình trống lâu
+          if (t === lastData) {
+            console.log("Dữ liệu không đổi, giữ nguyên bản tin.");
+          }
+          lastData = t;
+
           const rows = t
             .split("\n")
             .filter((row) => row.trim() !== "")
@@ -110,14 +131,27 @@
                 </div>`;
             }
           });
+
+          // Đổ dữ liệu mới vào
           document.getElementById("feed").innerHTML =
             html || "<p style='text-align:center'>Chưa có bản tin nào.</p>";
+          console.log(
+            "Đã cập nhật bản tin lúc: " + new Date().toLocaleTimeString(),
+          );
         } catch (e) {
           document.getElementById("feed").innerHTML =
             "<div id='loading'>Lỗi kết nối dữ liệu! Thầy kiểm tra lại link Sheets nhé.</div>";
         }
       }
+
+      // Chạy ngay khi mở trang
       load();
+
+      // Tự động reset và kiểm tra sau mỗi 30 giây
+      setInterval(load, 30000);
+
+      // Ép nhảy lên đầu trang khi vào lại
+      window.onload = () => window.scrollTo(0, 0);
     </script>
   </body>
 </html>
