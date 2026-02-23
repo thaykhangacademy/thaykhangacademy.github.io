@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gửi Câu Hỏi Cho Thầy Khang Academy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Lexend", sans-serif;
+        background-color: #f1f5f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+      .faq-form-container {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 550px;
+        border-top: 8px solid #00bcd4;
+      }
+      h1 {
+        color: #1e293b;
+        font-size: 1.6rem;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      p.subtitle {
+        text-align: center;
+        color: #64748b;
+        margin-bottom: 30px;
+        font-size: 0.95rem;
+      }
+      .input-group {
+        margin-bottom: 20px;
+      }
+      .input-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #475569;
+      }
+      .input-group input,
+      .input-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+      .input-group textarea {
+        height: 120px;
+        resize: none;
+      }
+      .input-group input:focus,
+      .input-group textarea:focus {
+        border-color: #00bcd4;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+      }
+      .btn-send {
+        width: 100%;
+        padding: 15px;
+        background: #00bcd4;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .btn-send:hover {
+        background: #0891b2;
+        transform: translateY(-2px);
+      }
+      .footer-note {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.85rem;
+        color: #94a3b8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="faq-form-container">
+      <h1>
+        <i class="fas fa-question-circle" style="color: #00bcd4"></i> GIẢI ĐÁP
+        THẮC MẮC
+      </h1>
+      <p class="subtitle">
+        Thầy Khang sẽ trả lời thắc mắc của bạn qua SĐT hoặc Email trong vòng
+        24h.
+      </p>
+
+      <form action="https://formspree.io/f/mwvvddpv" method="POST">
+        <div class="input-group">
+          <label>Họ và tên của bạn</label>
+          <input
+            type="text"
+            name="Ten_Hoc_Vien"
+            placeholder="Ví dụ: Nguyễn Văn A"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Số điện thoại Zalo</label>
+          <input
+            type="tel"
+            name="So_Dien_Thoai"
+            placeholder="Để Thầy gọi lại tư vấn"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Câu hỏi của bạn là gì?</label>
+          <textarea
+            name="Noi_Dung_Cau_Hoi"
+            placeholder="Mời bạn nhập thắc mắc về học phí, lịch học hoặc thủ tục hồ sơ..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-send">GỬI CÂU HỎI NGAY</button>
+      </form>
+
+      <div class="footer-note">Hệ thống hỗ trợ học viên Thầy Khang Academy</div>
+    </div>
+  </body>
+</html>
