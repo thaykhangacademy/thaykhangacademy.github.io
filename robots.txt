@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://thaykhangacademy.qzz.io/sitemap.xml
